@@ -1,0 +1,242 @@
+/* ===========================================================
+   Theme: Riso
+   Risograph duotone (pink+blue, multiply-blended). Match
+   [markup.highlight] style to "xcode".
+   =========================================================== */
+
+:root {
+    --riso-display: ui-rounded, 'SF Pro Rounded', 'Segoe UI', 'Noto Sans', sans-serif;
+    --riso-bg: #f2efe4;
+    --riso-card: #ffffff;
+    --riso-ink: #201f2b;
+    --riso-pink: #ff5da6;
+    --riso-pink-dark: #c81f74;
+    --riso-pink-tint: rgba(255, 93, 166, .16);
+    --riso-blue: #0074e4;
+    --riso-blue-dark: #0058b0;
+    --riso-blue-tint: rgba(0, 116, 228, .14);
+    --riso-purple-dark: #5b2f8f;
+}
+
+body {
+    font-family: var(--riso-display);
+}
+
+h1,
+h2,
+h3,
+.text-landing,
+.text-data {
+    font-weight: 800;
+}
+
+/* -----------------------------------------------------------
+   Backgrounds: two translucent spot-color blobs, multiply-
+   blended onto the paper so their overlap prints a third color,
+   like a misregistered riso pass.
+   ----------------------------------------------------------- */
+
+.bg-primary,
+.bg-secondary,
+.bg-gradient-r,
+.bg-gradient-h,
+.bg-gradient-hi,
+.bg-gradient-v,
+.bg-gradient-vi {
+    background-blend-mode: multiply;
+    background-color: var(--riso-bg) !important;
+    background-image: radial-gradient(circle at 22% 25%, rgba(255, 93, 166, .6) 0%, transparent 48%),
+        radial-gradient(circle at 78% 72%, rgba(0, 116, 228, .55) 0%, transparent 48%) !important;
+    color: var(--riso-ink);
+    text-shadow: none;
+}
+
+[class*='bg-'] a,
+[class*='bg-gradient-'] a {
+    color: var(--riso-pink-dark);
+}
+
+/* webslides.css hardcodes a white .frame border. */
+.frame {
+    border-color: var(--riso-ink);
+    border-radius: 1.6rem;
+}
+
+/* -----------------------------------------------------------
+   Wider margins, airier spacing: narrower content column, more
+   room around headings, cards and quotes.
+   ----------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+    .size-80 {
+        width: 66%;
+    }
+}
+
+.text-intro,
+[class*='content-'] p {
+    line-height: 4.8rem;
+}
+
+.flexblock li,
+.flexblock.blink li>a {
+    padding: 3.2rem;
+}
+
+/* -----------------------------------------------------------
+   Title / section-break accent
+   ----------------------------------------------------------- */
+
+[class*='bg-'] hr {
+    background: repeating-linear-gradient(90deg, var(--riso-pink) 0 10px, var(--riso-blue) 10px 20px);
+}
+
+[class*='bg-'] hr:after {
+    background-color: var(--riso-ink);
+    color: var(--riso-bg);
+}
+
+.text-symbols {
+    color: var(--riso-pink-dark);
+    display: inline-block;
+    transform: rotate(-1.5deg);
+}
+
+/* -----------------------------------------------------------
+   Lists: flexblock reasons / specs / steps / features
+   ----------------------------------------------------------- */
+
+[class*='bg-'] .flexblock li.active a,
+[class*='bg-'] .metrics li:hover,
+[class*='bg-'] .specs li:hover,
+[class*='bg-'] .reasons li:hover {
+    background-color: var(--riso-pink-tint);
+}
+
+[class*='bg-'] .features li,
+[class*='bg-'] .clients li {
+    background-color: var(--riso-card);
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 0 var(--riso-ink);
+}
+
+[class*='bg-'] .features li:hover,
+[class*='bg-'] .clients li:hover {
+    box-shadow: 0 4px 0 var(--riso-pink-dark);
+}
+
+[class*='bg-'] .specs li:after {
+    background: linear-gradient(to right, rgba(0, 116, 228, 0) 0%, var(--riso-blue) 50%, rgba(0, 116, 228, 0) 100%);
+}
+
+.reasons li:after {
+    background: linear-gradient(to right, rgba(255, 93, 166, 0) 0%, var(--riso-pink) 50%, rgba(255, 93, 166, 0) 100%);
+}
+
+[class*='bg-'] .overlay {
+    background-color: var(--riso-blue-tint);
+}
+
+[class*='bg-'] li:hover .overlay {
+    background-color: var(--riso-pink-tint);
+}
+
+.steps a {
+    color: #fff;
+}
+
+.steps li:nth-child(1) {
+    background-color: var(--riso-ink);
+    border-radius: 1.2rem;
+    color: #fff;
+}
+
+.steps li:nth-child(2) {
+    background-color: var(--riso-pink-dark);
+    border-radius: 1.2rem;
+    color: #fff;
+}
+
+.steps li:nth-child(3) {
+    background-color: var(--riso-blue-dark);
+    border-radius: 1.2rem;
+    color: #fff;
+}
+
+.steps li:nth-child(4) {
+    background-color: var(--riso-purple-dark);
+    border-radius: 1.2rem;
+    color: #fff;
+}
+
+.steps li:hover,
+.steps.blink li:hover>a {
+    background-color: var(--riso-card);
+    color: var(--riso-ink);
+}
+
+@media (min-width: 1024px) {
+    .process.step-2 {
+        border-left-color: var(--riso-ink);
+    }
+
+    .process.step-3 {
+        border-left-color: var(--riso-pink-dark);
+    }
+
+    .process.step-4 {
+        border-left-color: var(--riso-blue-dark);
+    }
+
+    .steps li:hover+li [class*='step-'] {
+        border-left-color: var(--riso-card);
+    }
+}
+
+/* -----------------------------------------------------------
+   Blockquotes: rounded card, thick ink border, stamped quote
+   ----------------------------------------------------------- */
+
+blockquote {
+    background: var(--riso-card);
+    border: .3rem solid var(--riso-ink);
+    border-radius: 1.6rem;
+    padding: 3.2rem 3.6rem;
+}
+
+blockquote:before {
+    color: var(--riso-blue-dark);
+    content: '\201C';
+    font-size: 6rem;
+    left: 1.2rem;
+    line-height: 1;
+    position: absolute;
+    top: 0;
+}
+
+cite {
+    color: var(--riso-blue-dark);
+}
+
+/* -----------------------------------------------------------
+   Code blocks: colors come from config.toml's
+   markup.highlight.style ("xcode" for this theme). Only the
+   card chrome is themed here.
+   ----------------------------------------------------------- */
+
+pre {
+    border: .2rem solid var(--riso-ink);
+    border-radius: 1.2rem;
+    box-shadow: .4rem .4rem 0 var(--riso-pink);
+}
+
+code {
+    background-color: var(--riso-pink-tint) !important;
+    border-radius: .6rem;
+    color: var(--riso-pink-dark);
+}
+
+pre code {
+    background-color: transparent !important;
+    color: inherit;
+}

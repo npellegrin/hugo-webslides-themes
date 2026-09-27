@@ -1,0 +1,5 @@
+[params]
+customcss = ["css/theme-aurora.css"]
+
+[markup.highlight]
+style = "monokai"

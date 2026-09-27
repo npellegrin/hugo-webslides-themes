@@ -1,0 +1,214 @@
+/* ===========================================================
+   Theme: Aurora
+   Red/amber skin for the deck.
+   =========================================================== */
+
+:root {
+    --aurora-ink: #170a0c;
+    --aurora-ink-2: #200e10;
+    --aurora-maroon: #3a0f16;
+    --aurora-crimson: #7a1424;
+    --aurora-red: #c62236;
+    --aurora-ember: #e8452c;
+    --aurora-amber: #ff9900;
+    --aurora-amber-soft: rgba(255, 153, 0, .2);
+    --aurora-ember-soft: rgba(232, 69, 44, .2);
+    --aurora-red-soft: rgba(198, 34, 54, .22);
+    --aurora-crimson-soft: rgba(122, 20, 36, .3);
+}
+
+/* -----------------------------------------------------------
+   Backgrounds: each class gets its own mood instead of one
+   navy tone everywhere, so consecutive slides read as varied.
+   ----------------------------------------------------------- */
+
+.bg-primary,
+.bg-secondary {
+    background: radial-gradient(ellipse 90% 60% at 50% -10%, var(--aurora-amber-soft) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 55% at 105% 115%, var(--aurora-crimson-soft) 0%, transparent 60%),
+        linear-gradient(160deg, var(--aurora-ink) 0%, var(--aurora-maroon) 100%);
+}
+
+.bg-gradient-r {
+    background: radial-gradient(at 12% 15%, var(--aurora-amber-soft) 0px, transparent 45%),
+        radial-gradient(at 88% 12%, var(--aurora-ember-soft) 0px, transparent 45%),
+        radial-gradient(at 82% 92%, var(--aurora-crimson-soft) 0px, transparent 50%),
+        radial-gradient(at 12% 92%, var(--aurora-red-soft) 0px, transparent 45%),
+        linear-gradient(160deg, var(--aurora-ink-2) 0%, var(--aurora-maroon) 100%) !important;
+}
+
+.bg-gradient-h {
+    background: linear-gradient(134deg, var(--aurora-crimson) 0%, var(--aurora-ink) 100%) !important;
+}
+
+.bg-gradient-hi {
+    background: linear-gradient(134deg, var(--aurora-ink) 0%, var(--aurora-crimson) 100%) !important;
+}
+
+.bg-gradient-v {
+    background: linear-gradient(to top, var(--aurora-maroon) 0%, var(--aurora-ink) 100%) !important;
+}
+
+.bg-gradient-vi {
+    background: linear-gradient(to top, var(--aurora-ink) 0%, var(--aurora-maroon) 100%) !important;
+}
+
+/* -----------------------------------------------------------
+   Title / section-break accent: the "***" divider under every
+   .text-landing headline becomes a glowing accent mark instead
+   of a flat white line.
+   ----------------------------------------------------------- */
+
+[class*='bg-'] hr {
+    background: radial-gradient(ellipse at center, rgba(255, 153, 0, .6) 0, rgba(255, 153, 0, 0) 75%);
+}
+
+[class*='bg-'] hr:after {
+    background-color: var(--aurora-amber);
+    box-shadow: 0 0 1.6rem rgba(255, 153, 0, .7);
+    color: var(--aurora-ink);
+}
+
+.text-symbols {
+    color: var(--aurora-amber);
+}
+
+/* -----------------------------------------------------------
+   Lists: flexblock reasons / specs / steps / features
+   ----------------------------------------------------------- */
+
+[class*='bg-'] .flexblock li.active a,
+[class*='bg-'] .metrics li:hover,
+[class*='bg-'] .specs li:hover,
+[class*='bg-'] .reasons li:hover {
+    background-color: var(--aurora-amber-soft);
+}
+
+[class*='bg-'] .features li:hover,
+[class*='bg-'] .clients li:hover {
+    box-shadow: 0 8px 24px rgba(232, 69, 44, .3), 0 4px 16px rgba(198, 34, 54, .25);
+}
+
+[class*='bg-'] .specs li:after {
+    background: linear-gradient(to right, rgba(255, 153, 0, 0) 0%, rgba(255, 153, 0, .55) 50%, rgba(255, 153, 0, 0) 100%);
+}
+
+.reasons li:after {
+    background: linear-gradient(to right, rgba(232, 69, 44, 0) 0%, rgba(232, 69, 44, .5) 50%, rgba(232, 69, 44, 0) 100%);
+}
+
+[class*='bg-'] .overlay {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+[class*='bg-'] li:hover .overlay {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.steps a {
+    color: #fff;
+}
+
+.steps li:nth-child(1) {
+    background-color: var(--aurora-maroon);
+    color: #fff;
+}
+
+.steps li:nth-child(2) {
+    background-color: var(--aurora-crimson);
+    color: #fff;
+}
+
+.steps li:nth-child(3) {
+    background-color: var(--aurora-red);
+    color: #fff;
+}
+
+.steps li:nth-child(4) {
+    background-color: var(--aurora-ember);
+    color: #fff;
+}
+
+.steps li:hover,
+.steps.blink li:hover>a {
+    background-color: var(--aurora-amber);
+    color: var(--aurora-ink);
+}
+
+@media (min-width: 1024px) {
+    .process.step-2 {
+        border-left-color: var(--aurora-maroon);
+    }
+
+    .process.step-3 {
+        border-left-color: var(--aurora-crimson);
+    }
+
+    .process.step-4 {
+        border-left-color: var(--aurora-red);
+    }
+
+    .steps li:hover+li [class*='step-'] {
+        border-left-color: var(--aurora-amber);
+    }
+}
+
+/* -----------------------------------------------------------
+   Blockquotes: accent rail + tinted panel instead of plain text
+   ----------------------------------------------------------- */
+
+blockquote {
+    background: rgba(255, 255, 255, .05);
+    border-left: .4rem solid var(--aurora-amber);
+    border-radius: 0 1.2rem 1.2rem 0;
+    padding: 2.4rem 2.8rem 2.4rem 3.2rem;
+}
+
+blockquote:before {
+    color: var(--aurora-amber);
+    content: '\201C';
+    font-size: 6rem;
+    left: .8rem;
+    line-height: 1;
+    position: absolute;
+    top: 0;
+}
+
+cite {
+    color: #ffb37a;
+}
+
+/* -----------------------------------------------------------
+   Code blocks: rounded "terminal window" card instead of a
+   flat translucent rectangle.
+   ----------------------------------------------------------- */
+
+pre {
+    background: rgba(10, 8, 24, .55) !important;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 1.2rem;
+    box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, .35);
+    padding-top: 4.4rem !important;
+    position: relative;
+}
+
+pre:before {
+    background: #ff5f56;
+    border-radius: 50%;
+    box-shadow: 1.6rem 0 0 #ffbd2e, 3.2rem 0 0 #27c93f;
+    content: '';
+    height: .9rem;
+    left: 1.8rem;
+    position: absolute;
+    top: 1.6rem;
+    width: .9rem;
+}
+
+code {
+    background-color: rgba(255, 153, 0, .12) !important;
+    border-radius: .4rem;
+}
+
+pre code {
+    background-color: transparent !important;
+}

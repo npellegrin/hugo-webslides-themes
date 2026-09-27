@@ -1,0 +1,109 @@
+    .slide {
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+
+/* Add some space to content on large screens */
+/*
+@media (min-width: 1024px) {
+
+    section,
+    .slide {
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+}
+*/
+
+/* Adjustment of GOAT diagrams size */
+/*
+.goat svg {
+    max-width: 100vw;
+    max-height: 100vh;
+    min-width: 80vw;
+    min-height: 70vh;
+}
+*/
+
+/* ===========================================================
+   Everything below is theme-agnostic
+   =========================================================== */
+
+/* Webslides default bg-* palette (bg-light, bg-blue, ...): not
+   used anywhere in content/v1/index.md, so it isn't part of any
+   theme's identity. Kept here, centralized, rather than
+   duplicated three times for classes nothing renders. */
+
+.bg-light {
+    background-color: #f7f9fb;
+}
+
+.bg-black {
+    background-color: #111;
+}
+
+.bg-black-blue {
+    background-color: #123;
+}
+
+.bg-blue {
+    background-color: #346;
+}
+
+.bg-brown {
+    background-color: #f9f8f2;
+}
+
+.bg-gray {
+    background-color: #d5d9e2;
+}
+
+.bg-green {
+    background-color: #077;
+}
+
+.bg-purple {
+    background-color: rgb(25, 56, 87);
+}
+
+.bg-red {
+    background-color: #c23;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.bg-facebook {
+    background-color: #3b5998;
+}
+
+[class*='bg-'] .bg-white {
+    color: #333;
+    text-shadow: none;
+}
+
+/*===========================================
+flexblock.steps: structure only, colors live in the theme files
+============================================= */
+
+.steps a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.process {
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+}
+
+/* Resets, no color involved: cancel whichever themed gradient
+   .specs/.reasons li:after applied, same in every theme. */
+
+[class*='bg-'] .specs li:last-child:after {
+    background: none;
+}
+
+[class*='bg-'] .reasons li:last-child:after {
+    background: none;
+}

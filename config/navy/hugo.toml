@@ -1,0 +1,5 @@
+[params]
+customcss = ["css/theme-navy.css"]
+
+[markup.highlight]
+style = "monokai"

@@ -1,0 +1,225 @@
+/* ===========================================================
+   Theme: Infinite
+   Clean corporate skin: white canvas, bold coral-pink accent
+   bar, dark ink text, flat (no glow mesh, no shimmer). A
+   continuous sweeping highlight on the title-slide rule nods to
+   the name. Match [markup.highlight] style to "vs".
+   =========================================================== */
+
+:root {
+    --inf-display: system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --inf-bg: #ffffff;
+    --inf-panel: #f5f4f6;
+    --inf-ink: #14141a;
+    /* Brand primary: large accents/backgrounds only, not text
+       (~3.5:1 on white, below the 4.5:1 text threshold). */
+    --inf-primary: #f8485e;
+    /* Darker, text-safe variant (~5.2:1 on white). */
+    --inf-primary-dark: #d1233f;
+    --inf-primary-dim: rgba(248, 72, 94, .1);
+}
+
+body {
+    font-family: var(--inf-display);
+}
+
+h1,
+h2,
+h3,
+.text-landing,
+.text-data,
+.text-serif,
+h1 span {
+    font-family: var(--inf-display);
+    font-weight: 800;
+}
+
+/* -----------------------------------------------------------
+   Backgrounds: flat white, a thin brand-color bar along the top.
+   ----------------------------------------------------------- */
+
+.bg-primary,
+.bg-secondary,
+.bg-gradient-r,
+.bg-gradient-h,
+.bg-gradient-hi,
+.bg-gradient-v,
+.bg-gradient-vi {
+    background: linear-gradient(var(--inf-primary), var(--inf-primary)) top left / 100% .6rem no-repeat,
+        var(--inf-bg) !important;
+    color: var(--inf-ink);
+    text-shadow: none;
+}
+
+[class*='bg-'] a,
+[class*='bg-gradient-'] a {
+    color: var(--inf-primary-dark);
+}
+
+/* webslides.css hardcodes a white .frame border. */
+.frame {
+    border-color: var(--inf-primary);
+}
+
+/* -----------------------------------------------------------
+   Title / section-break accent: a bright band loops endlessly
+   along the rule under every landing title.
+   ----------------------------------------------------------- */
+
+@keyframes inf-loop {
+    to {
+        background-position: 200% center;
+    }
+}
+
+[class*='bg-'] hr {
+    animation: inf-loop 3s linear infinite;
+    background: linear-gradient(90deg, var(--inf-primary) 0%, var(--inf-primary) 40%, #ffb3bc 50%, var(--inf-primary) 60%, var(--inf-primary) 100%);
+    background-size: 200% auto;
+}
+
+[class*='bg-'] hr:after {
+    background-color: var(--inf-primary-dark);
+    color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [class*='bg-'] hr {
+        animation: none;
+    }
+}
+
+.text-symbols {
+    color: var(--inf-primary-dark);
+}
+
+/* -----------------------------------------------------------
+   Lists: flexblock reasons / specs / steps / features
+   ----------------------------------------------------------- */
+
+[class*='bg-'] .flexblock li.active a,
+[class*='bg-'] .metrics li:hover,
+[class*='bg-'] .specs li:hover,
+[class*='bg-'] .reasons li:hover {
+    background-color: var(--inf-primary-dim);
+}
+
+[class*='bg-'] .features li,
+[class*='bg-'] .clients li {
+    background-color: var(--inf-panel);
+    border-left: .3rem solid transparent;
+}
+
+[class*='bg-'] .features li:hover,
+[class*='bg-'] .clients li:hover {
+    border-left-color: var(--inf-primary);
+    box-shadow: 0 4px 16px rgba(20, 20, 26, .12);
+}
+
+[class*='bg-'] .specs li:after {
+    background: linear-gradient(to right, transparent 0%, var(--inf-primary) 50%, transparent 100%);
+}
+
+.reasons li:after {
+    background: linear-gradient(to right, transparent 0%, var(--inf-primary) 50%, transparent 100%);
+}
+
+[class*='bg-'] .overlay {
+    background-color: rgba(20, 20, 26, .08);
+}
+
+[class*='bg-'] li:hover .overlay {
+    background-color: var(--inf-primary-dim);
+}
+
+.steps a {
+    color: #fff;
+}
+
+.steps li:nth-child(1) {
+    background-color: var(--inf-ink);
+    color: #fff;
+}
+
+.steps li:nth-child(2) {
+    background-color: #4a4a55;
+    color: #fff;
+}
+
+.steps li:nth-child(3) {
+    background-color: var(--inf-primary-dark);
+    color: #fff;
+}
+
+.steps li:nth-child(4) {
+    background-color: var(--inf-primary-dark);
+    color: #fff;
+}
+
+.steps li:hover,
+.steps.blink li:hover>a {
+    background-color: var(--inf-primary-dark);
+}
+
+@media (min-width: 1024px) {
+    .process.step-2 {
+        border-left-color: var(--inf-ink);
+    }
+
+    .process.step-3 {
+        border-left-color: #4a4a55;
+    }
+
+    .process.step-4 {
+        border-left-color: var(--inf-primary-dark);
+    }
+
+    .steps li:hover+li [class*='step-'] {
+        border-left-color: var(--inf-primary-dark);
+    }
+}
+
+/* -----------------------------------------------------------
+   Blockquotes: white card, single brand-color rail
+   ----------------------------------------------------------- */
+
+blockquote {
+    background: var(--inf-panel);
+    border-left: .4rem solid var(--inf-primary);
+    padding: 2.4rem 2.8rem;
+}
+
+blockquote:before {
+    color: var(--inf-primary-dark);
+    content: '\201C';
+    font-size: 5rem;
+    left: 1rem;
+    line-height: 1;
+    position: absolute;
+    top: 0;
+}
+
+cite {
+    color: #4a4a55;
+}
+
+/* -----------------------------------------------------------
+   Code blocks: colors come from config.toml's
+   markup.highlight.style ("vs" for this theme). Only the card
+   chrome is themed here.
+   ----------------------------------------------------------- */
+
+pre {
+    border: 1px solid rgba(20, 20, 26, .1);
+    border-top: .3rem solid var(--inf-primary);
+}
+
+code {
+    background-color: var(--inf-primary-dim) !important;
+    color: var(--inf-primary-dark);
+}
+
+pre code {
+    background-color: transparent !important;
+    color: inherit;
+}

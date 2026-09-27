@@ -1,0 +1,393 @@
+/* ===========================================================
+   Theme: Unicorn
+   Pastel rainbow, animated shimmer, glitter, gradient-clipped
+   headline text, concentric candy-ring shadows. Match
+   [markup.highlight] style to "vs".
+   =========================================================== */
+
+:root {
+    --uni-display: ui-rounded, 'SF Pro Rounded', 'Segoe UI', 'Noto Sans', sans-serif;
+    --uni-bg: #fdf1ff;
+    --uni-bg-2: #eef2ff;
+    --uni-card: #ffffff;
+    --uni-ink: #3a1250;
+    --uni-pink: #ff6ec7;
+    --uni-pink-dark: #d6248f;
+    --uni-purple: #a78bfa;
+    --uni-purple-dark: #6d28d9;
+    --uni-blue: #60a5fa;
+    --uni-blue-dark: #1d4ed8;
+    --uni-cyan: #22d3ee;
+    --uni-mint: #34d399;
+    --uni-mint-dark: #047857;
+    --uni-yellow: #fbbf24;
+}
+
+body {
+    font-family: var(--uni-display);
+}
+
+h1,
+h2,
+h3,
+.text-landing,
+.text-data,
+.text-serif,
+h1 span {
+    font-family: var(--uni-display);
+    font-weight: 800;
+}
+
+/* -----------------------------------------------------------
+   Backgrounds: pastel sky, four soft color glows, slow shimmer,
+   a handful of glitter sparkles. Reduced-motion turns it static.
+   ----------------------------------------------------------- */
+
+@keyframes uni-shimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+
+    50% {
+        background-position: 100% 50%, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+}
+
+.bg-primary,
+.bg-secondary,
+.bg-gradient-r,
+.bg-gradient-h,
+.bg-gradient-hi,
+.bg-gradient-v,
+.bg-gradient-vi {
+    animation: uni-shimmer 18s ease-in-out infinite;
+    background: linear-gradient(120deg, var(--uni-bg) 0%, var(--uni-bg-2) 35%, #fff7fb 65%, var(--uni-bg) 100%),
+        radial-gradient(circle at 15% 20%, rgba(255, 110, 199, .35), transparent 40%),
+        radial-gradient(circle at 85% 15%, rgba(96, 165, 250, .3), transparent 40%),
+        radial-gradient(circle at 75% 85%, rgba(52, 211, 153, .28), transparent 45%),
+        radial-gradient(circle at 20% 85%, rgba(167, 139, 250, .3), transparent 40%),
+        radial-gradient(circle 3px at 10% 40%, rgba(255, 255, 255, .95), transparent 60%),
+        radial-gradient(circle 2px at 60% 22%, rgba(255, 255, 255, .9), transparent 60%),
+        radial-gradient(circle 2px at 88% 62%, rgba(255, 255, 255, .95), transparent 60%),
+        radial-gradient(circle 3px at 35% 82%, rgba(255, 255, 255, .9), transparent 60%) !important;
+    background-size: 200% 200%, auto, auto, auto, auto, auto, auto, auto, auto;
+    color: var(--uni-ink);
+    text-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .bg-primary,
+    .bg-secondary,
+    .bg-gradient-r,
+    .bg-gradient-h,
+    .bg-gradient-hi,
+    .bg-gradient-v,
+    .bg-gradient-vi {
+        animation: none;
+    }
+}
+
+[class*='bg-'] a,
+[class*='bg-gradient-'] a {
+    color: var(--uni-purple-dark);
+}
+
+/* webslides.css hardcodes a white .frame border. */
+@keyframes uni-border-cycle {
+    0% {
+        border-color: var(--uni-pink);
+    }
+
+    20% {
+        border-color: var(--uni-purple);
+    }
+
+    40% {
+        border-color: var(--uni-blue);
+    }
+
+    60% {
+        border-color: var(--uni-cyan);
+    }
+
+    80% {
+        border-color: var(--uni-mint);
+    }
+
+    100% {
+        border-color: var(--uni-pink);
+    }
+}
+
+.frame {
+    animation: uni-border-cycle 6s linear infinite;
+    border-radius: 2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .frame {
+        animation: none;
+        border-color: var(--uni-purple);
+    }
+}
+
+/* -----------------------------------------------------------
+   Title / section-break accent
+   ----------------------------------------------------------- */
+
+/* Reused for any moving rainbow gradient: text, hr, ... */
+@keyframes uni-gradient-shift {
+    to {
+        background-position: 200% center;
+    }
+}
+
+[class*='bg-'] hr {
+    animation: uni-gradient-shift 4s linear infinite;
+    background: linear-gradient(90deg, var(--uni-pink), var(--uni-purple), var(--uni-blue), var(--uni-cyan), var(--uni-mint), var(--uni-yellow), var(--uni-pink));
+    background-size: 200% auto;
+}
+
+@keyframes uni-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 1.2rem rgba(167, 139, 250, .6);
+    }
+
+    50% {
+        box-shadow: 0 0 2rem rgba(255, 110, 199, .85);
+    }
+}
+
+[class*='bg-'] hr:after {
+    animation: uni-pulse 2.5s ease-in-out infinite;
+    background-color: var(--uni-purple-dark);
+    color: #fff;
+}
+
+.text-symbols {
+    color: var(--uni-purple-dark);
+}
+
+/* Gradient-clipped, slowly shifting headline text: every h1/h2
+   title, not just .text-landing/.text-data. */
+h1,
+h2,
+.text-data {
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(90deg, var(--uni-pink), var(--uni-purple), var(--uni-blue), var(--uni-cyan), var(--uni-mint), var(--uni-pink));
+    background-size: 200% auto;
+    animation: uni-gradient-shift 6s linear infinite;
+    color: var(--uni-purple-dark);
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+/* Slide titles only, not headings inside a card/list item. */
+.flexblock li h1,
+.flexblock li h2,
+.flexblock li h3 {
+    animation: none;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    color: inherit;
+    -webkit-text-fill-color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    [class*='bg-'] hr,
+    [class*='bg-'] hr:after,
+    h1,
+    h2,
+    .text-data {
+        animation: none;
+    }
+}
+
+/* -----------------------------------------------------------
+   Lists: flexblock reasons / specs / steps / features
+   ----------------------------------------------------------- */
+
+[class*='bg-'] .flexblock li.active a,
+[class*='bg-'] .metrics li:hover,
+[class*='bg-'] .specs li:hover,
+[class*='bg-'] .reasons li:hover {
+    background-color: rgba(255, 110, 199, .12);
+}
+
+[class*='bg-'] .features li,
+[class*='bg-'] .clients li {
+    background-color: var(--uni-card);
+    border-radius: 1.6rem;
+}
+
+[class*='bg-'] .features li:hover,
+[class*='bg-'] .clients li:hover {
+    box-shadow: 0 0 0 .2rem var(--uni-pink), 0 8px 20px rgba(167, 139, 250, .3);
+}
+
+[class*='bg-'] .specs li:after {
+    background: linear-gradient(to right, transparent 0%, var(--uni-blue) 50%, transparent 100%);
+}
+
+.reasons li:after {
+    background: linear-gradient(to right, transparent 0%, var(--uni-pink) 50%, transparent 100%);
+}
+
+[class*='bg-'] .overlay {
+    background-color: rgba(255, 255, 255, .35);
+}
+
+[class*='bg-'] li:hover .overlay {
+    background-color: rgba(255, 110, 199, .15);
+}
+
+.steps li:nth-child(1) {
+    background-color: var(--uni-pink-dark);
+    border-radius: 1.2rem;
+    color: #fff;
+}
+
+.steps li:nth-child(2) {
+    background-color: var(--uni-purple-dark);
+    border-radius: 1.2rem;
+    color: #fff;
+}
+
+.steps li:nth-child(3) {
+    background-color: var(--uni-blue-dark);
+    border-radius: 1.2rem;
+    color: #fff;
+}
+
+.steps li:nth-child(4) {
+    background-color: var(--uni-mint-dark);
+    border-radius: 1.2rem;
+    color: #fff;
+}
+
+.steps li:hover,
+.steps.blink li:hover>a {
+    background: linear-gradient(90deg, var(--uni-pink-dark), var(--uni-purple-dark), var(--uni-blue-dark));
+    color: #fff;
+}
+
+@media (min-width: 1024px) {
+    .process.step-2 {
+        border-left-color: var(--uni-pink-dark);
+    }
+
+    .process.step-3 {
+        border-left-color: var(--uni-purple-dark);
+    }
+
+    .process.step-4 {
+        border-left-color: var(--uni-blue-dark);
+    }
+
+    .steps li:hover+li [class*='step-'] {
+        border-left-color: var(--uni-purple-dark);
+    }
+}
+
+/* -----------------------------------------------------------
+   Blockquotes: white card, concentric candy-ring shadow
+   ----------------------------------------------------------- */
+
+@keyframes uni-ring-cycle {
+    0% {
+        box-shadow: 0 0 0 .3rem var(--uni-pink), 0 0 0 .55rem var(--uni-purple), 0 12px 28px rgba(167, 139, 250, .3);
+    }
+
+    33% {
+        box-shadow: 0 0 0 .3rem var(--uni-blue), 0 0 0 .55rem var(--uni-cyan), 0 12px 28px rgba(96, 165, 250, .3);
+    }
+
+    66% {
+        box-shadow: 0 0 0 .3rem var(--uni-mint), 0 0 0 .55rem var(--uni-yellow), 0 12px 28px rgba(52, 211, 153, .3);
+    }
+
+    100% {
+        box-shadow: 0 0 0 .3rem var(--uni-pink), 0 0 0 .55rem var(--uni-purple), 0 12px 28px rgba(167, 139, 250, .3);
+    }
+}
+
+blockquote {
+    animation: uni-ring-cycle 8s ease-in-out infinite;
+    background: var(--uni-card);
+    border-radius: 2rem;
+    padding: 3.2rem 3.6rem;
+}
+
+blockquote:before {
+    color: var(--uni-purple-dark);
+    content: '\201C';
+    font-size: 6rem;
+    left: 1.2rem;
+    line-height: 1;
+    position: absolute;
+    top: 0;
+}
+
+cite {
+    color: var(--uni-blue-dark);
+}
+
+/* -----------------------------------------------------------
+   Code blocks: colors come from config.toml's
+   markup.highlight.style ("vs" for this theme). Only the card
+   chrome is themed here.
+   ----------------------------------------------------------- */
+
+@keyframes uni-pre-ring {
+    0% {
+        box-shadow: 0 0 0 .2rem var(--uni-pink), 0 8px 24px rgba(167, 139, 250, .25);
+    }
+
+    25% {
+        box-shadow: 0 0 0 .2rem var(--uni-purple), 0 8px 24px rgba(167, 139, 250, .25);
+    }
+
+    50% {
+        box-shadow: 0 0 0 .2rem var(--uni-blue), 0 8px 24px rgba(96, 165, 250, .25);
+    }
+
+    75% {
+        box-shadow: 0 0 0 .2rem var(--uni-mint), 0 8px 24px rgba(52, 211, 153, .25);
+    }
+
+    100% {
+        box-shadow: 0 0 0 .2rem var(--uni-pink), 0 8px 24px rgba(167, 139, 250, .25);
+    }
+}
+
+pre {
+    animation: uni-pre-ring 10s ease-in-out infinite;
+    border-radius: 1.6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    blockquote,
+    pre {
+        animation: none;
+    }
+}
+
+code {
+    background-color: rgba(255, 110, 199, .14) !important;
+    border-radius: .6rem;
+    color: var(--uni-pink-dark);
+}
+
+pre code {
+    background-color: transparent !important;
+    color: inherit;
+}

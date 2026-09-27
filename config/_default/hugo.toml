@@ -1,0 +1,35 @@
+baseURL = "/"
+theme = "hugo-webslides"
+locale = "en-US"
+title = "hugo-webslides themes"
+disableKinds = ["taxonomy", "term", "rss", "sitemap"]
+
+[params]
+author = "Nicolas Pellegrin"
+homepage = "https://github.com/npellegrin"
+
+# Default theme (no -e/--environment flag).
+customcss = ["css/theme-navy.css"]
+
+[params.webslides]
+banner = false
+slideshow = true
+vertical = false
+autoslide = false
+changeOnClick = false
+disableLoop = true
+minWheelDelta = 40
+disableNavigateOnScroll = true
+scrollWait = 450
+slideOffset = 50
+hideIndex = false
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+    [markup.goldmark.renderer]
+      unsafe = true

@@ -1,0 +1,5 @@
+[params]
+customcss = ["css/theme-paper.css"]
+
+[markup.highlight]
+style = "vs"

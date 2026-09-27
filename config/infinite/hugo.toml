@@ -1,0 +1,5 @@
+[params]
+customcss = ["css/theme-infinite.css"]
+
+[markup.highlight]
+style = "vs"

@@ -1,0 +1,5 @@
+[params]
+customcss = ["css/theme-terminal.css"]
+
+[markup.highlight]
+style = "native"

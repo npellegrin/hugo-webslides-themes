@@ -1,0 +1,234 @@
+/* ===========================================================
+   Theme: Terminal
+   Monospace type, flat near-black panels, hard 1px borders, no gradients/glow/blur.
+   =========================================================== */
+
+:root {
+    --term-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Cascadia Mono', 'Segoe UI Mono', Consolas, 'Liberation Mono', Menlo, Monaco, monospace;
+    --term-bg: #0a0e0a;
+    --term-panel: #12160f;
+    --term-panel-2: #1c231c;
+    --term-ink: #d9f2df;
+    --term-green: #59e88f;
+    --term-green-dark: #2f6b46;
+    --term-green-dim: rgba(89, 232, 143, .12);
+    --term-green-soft: rgba(89, 232, 143, .28);
+    --term-amber: #ffb454;
+}
+
+body {
+    font-family: var(--term-mono);
+}
+
+/* webslides.css hardcodes Maitree for .text-serif/h1 span. */
+.text-serif,
+h1 span {
+    font-family: var(--term-mono);
+}
+
+/* -----------------------------------------------------------
+   Backgrounds: flat near-black with a faint scanline texture
+   instead of a mesh glow. Same panel everywhere on purpose:
+   this theme reads as "one terminal", not five moods.
+   ----------------------------------------------------------- */
+
+.bg-primary,
+.bg-secondary,
+.bg-gradient-r,
+.bg-gradient-h,
+.bg-gradient-hi,
+.bg-gradient-v,
+.bg-gradient-vi {
+    background: repeating-linear-gradient(0deg, rgba(89, 232, 143, .025) 0px, rgba(89, 232, 143, .025) 1px, transparent 1px, transparent 3px),
+        var(--term-bg) !important;
+    color: var(--term-ink);
+    text-shadow: none;
+}
+
+[class*='bg-'] a,
+[class*='bg-gradient-'] a {
+    color: var(--term-green);
+    text-decoration: underline;
+}
+
+/* webslides.css hardcodes a white .frame border. */
+.frame {
+    border-color: var(--term-green);
+}
+
+/* -----------------------------------------------------------
+   Title / section-break accent: dashed rule instead of a glow,
+   plus a blinking cursor after every big headline.
+   ----------------------------------------------------------- */
+
+[class*='bg-'] hr {
+    background: repeating-linear-gradient(90deg, var(--term-green) 0, var(--term-green) 8px, transparent 8px, transparent 14px);
+}
+
+[class*='bg-'] hr:after {
+    background-color: var(--term-green);
+    border-radius: 0;
+    color: var(--term-bg);
+}
+
+.text-symbols {
+    color: var(--term-green);
+}
+
+@keyframes term-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.text-landing:after {
+    animation: term-blink 1s step-end infinite;
+    color: var(--term-green);
+    content: '_';
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .text-landing:after {
+        animation: none;
+    }
+}
+
+/* -----------------------------------------------------------
+   Lists: flexblock reasons / specs / steps / features
+   ----------------------------------------------------------- */
+
+[class*='bg-'] .flexblock li.active a,
+[class*='bg-'] .metrics li:hover,
+[class*='bg-'] .specs li:hover,
+[class*='bg-'] .reasons li:hover {
+    background-color: var(--term-green-dim);
+}
+
+[class*='bg-'] .features li,
+[class*='bg-'] .clients li {
+    background-color: var(--term-panel);
+    border: 1px solid var(--term-green-soft);
+}
+
+[class*='bg-'] .features li:hover,
+[class*='bg-'] .clients li:hover {
+    border-color: var(--term-green);
+    box-shadow: none;
+}
+
+[class*='bg-'] .specs li:after {
+    background: repeating-linear-gradient(90deg, var(--term-green) 0, var(--term-green) 4px, transparent 4px, transparent 8px);
+}
+
+.reasons li:after {
+    background: repeating-linear-gradient(90deg, var(--term-amber) 0, var(--term-amber) 4px, transparent 4px, transparent 8px);
+}
+
+[class*='bg-'] .overlay {
+    background-color: rgba(89, 232, 143, .15);
+}
+
+[class*='bg-'] li:hover .overlay {
+    background-color: rgba(89, 232, 143, .08);
+}
+
+.steps a {
+    color: inherit;
+}
+
+.steps li:nth-child(1) {
+    background-color: var(--term-panel-2);
+    border-radius: 0;
+    color: #fff;
+}
+
+.steps li:nth-child(2) {
+    background-color: var(--term-green-dark);
+    border-radius: 0;
+    color: #fff;
+}
+
+.steps li:nth-child(3) {
+    background-color: var(--term-green);
+    border-radius: 0;
+    color: var(--term-bg);
+}
+
+.steps li:nth-child(4) {
+    background-color: var(--term-amber);
+    border-radius: 0;
+    color: var(--term-bg);
+}
+
+.steps li:hover,
+.steps.blink li:hover>a {
+    background-color: var(--term-ink);
+    color: var(--term-bg);
+}
+
+@media (min-width: 1024px) {
+    .process.step-2 {
+        border-left-color: var(--term-panel-2);
+    }
+
+    .process.step-3 {
+        border-left-color: var(--term-green-dark);
+    }
+
+    .process.step-4 {
+        border-left-color: var(--term-green);
+    }
+
+    .steps li:hover+li [class*='step-'] {
+        border-left-color: var(--term-ink);
+    }
+}
+
+/* -----------------------------------------------------------
+   Blockquotes: boxed message with a ">" prompt, no curly quote
+   ----------------------------------------------------------- */
+
+blockquote {
+    background: var(--term-panel);
+    border: 1px solid var(--term-green);
+    border-radius: 0;
+    padding: 2.4rem 2.8rem 2.4rem 3.6rem;
+}
+
+blockquote:before {
+    color: var(--term-green);
+    content: '>';
+    font-size: 2.4rem;
+    font-weight: 700;
+    left: 1.2rem;
+    position: absolute;
+    top: 2rem;
+}
+
+cite {
+    color: var(--term-amber);
+}
+
+/* -----------------------------------------------------------
+   Code blocks: colors come from config.toml's
+   markup.highlight.style ("native" for this theme). Only the
+   card chrome is themed here, flat and square like everything
+   else in this theme.
+   ----------------------------------------------------------- */
+
+pre {
+    border: 1px solid var(--term-green);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+code {
+    background-color: var(--term-green-dim) !important;
+    border-radius: 0;
+    color: var(--term-green);
+}
+
+pre code {
+    background-color: transparent !important;
+    color: inherit;
+}

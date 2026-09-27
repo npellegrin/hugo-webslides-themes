@@ -1,0 +1,142 @@
+/* ===========================================================
+   Theme: Navy
+   The original blue/white look.
+   =========================================================== */
+
+:root {
+    --navy-ink: rgb(17, 34, 51);
+    --navy-mid: rgb(26, 54, 80);
+    --navy-blue: rgb(35, 70, 105);
+    --navy-light: rgb(40, 81, 122);
+    --navy-accent: rgb(26, 70, 114);
+    --navy-hover: rgb(42, 95, 148);
+    --navy-glow: rgba(255, 255, 255, 0.8);
+    --navy-glow-soft: rgba(255, 255, 255, 0.5);
+    --navy-tint: rgba(255, 255, 255, 0.05);
+    --navy-shadow-soft: rgba(255, 255, 255, 0.1);
+    --navy-shadow: rgba(255, 255, 255, 0.3);
+    --navy-line: rgba(255, 255, 255, 0.2);
+}
+
+.bg-primary {
+    background-color: var(--navy-ink);
+}
+
+/*Horizontal Gradient*/
+.bg-gradient-h {
+    background: linear-gradient(134deg, var(--navy-ink) 0, var(--navy-accent) 100%);
+}
+
+/*Horizontal Gradient Inverted*/
+.bg-gradient-hi {
+    background: linear-gradient(134deg, var(--navy-accent) 0, var(--navy-ink) 100%);
+}
+
+/*Vertical Gradient*/
+.bg-gradient-v {
+    background: linear-gradient(to top, var(--navy-accent) 0%, var(--navy-ink) 100%) !important;
+}
+
+/*Vertical Gradient Inverted*/
+.bg-gradient-vi {
+    background: linear-gradient(to top, var(--navy-ink) 0%, var(--navy-accent) 100%) !important;
+}
+
+/*Radial Gradient*/
+.bg-gradient-r {
+    background: radial-gradient(ellipse at center, var(--navy-accent) 0%, var(--navy-ink) 100%);
+}
+
+/*===========================================
+flexblock.steps
+============================================= */
+
+.steps a {
+    color: #fff;
+}
+
+.steps li:nth-child(1) {
+    background-color: var(--navy-ink);
+    color: #fff;
+}
+
+.steps li:nth-child(2) {
+    background-color: var(--navy-mid);
+    color: #fff;
+}
+
+.steps li:nth-child(3) {
+    background-color: var(--navy-blue);
+    color: #fff;
+}
+
+.steps li:nth-child(4) {
+    background-color: var(--navy-light);
+    color: #fff;
+}
+
+.steps li:hover,
+.steps.blink li:hover>a {
+    background-color: var(--navy-hover);
+}
+
+@media (min-width: 1024px) {
+    .process.step-2 {
+        /* Must be same as .steps li:nth-child(1) */
+        border-left-color: var(--navy-ink);
+    }
+
+    .process.step-3 {
+        /* Must be same as .steps li:nth-child(2) */
+        border-left-color: var(--navy-mid);
+    }
+
+    .process.step-4 {
+        /* Must be same as .steps li:nth-child(3) */
+        border-left-color: var(--navy-blue);
+    }
+
+    /* Must be same as .steps li:hover */
+    .steps li:hover+li [class*='step-'] {
+        border-left-color: var(--navy-hover);
+    }
+}
+
+/* Custom patch for components invisible on dark backgrounds */
+
+[class*='bg-'] hr {
+    background: radial-gradient(ellipse at center, var(--navy-glow-soft) 0, rgba(255, 255, 255, 0) 75%);
+}
+
+[class*='bg-'] hr:after {
+    background-color: var(--navy-glow);
+    color: #333;
+}
+
+[class*='bg-'] .flexblock li.active a,
+[class*='bg-'] .metrics li:hover,
+[class*='bg-'] .specs li:hover,
+[class*='bg-'] .reasons li:hover {
+    background-color: var(--navy-tint);
+}
+
+[class*='bg-'] .features li:hover,
+[class*='bg-'] .clients li:hover {
+    box-shadow: 0 8px 16px var(--navy-shadow-soft), 0 4px 16px var(--navy-shadow);
+}
+
+[class*='bg-'] .specs li:after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--navy-line) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+.reasons li:after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, var(--navy-line) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+[class*='bg-'] .overlay {
+    background-color: var(--navy-line);
+}
+
+[class*='bg-'] li:hover .overlay {
+    background-color: var(--navy-shadow-soft);
+}
