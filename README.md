@@ -3,7 +3,18 @@
 Seven color/typography themes for [hugo-webslides](https://github.com/RCJacH/hugo-webslides),
 with one demo deck that shows every component they style.
 
-Themes: `navy`, `aurora`, `paper`, `terminal`, `riso`, `unicorn`, `infinite`.
+## Live demos
+
+All themes are deployed to GitHub Pages, one subfolder each
+(index: <https://npellegrin.github.io/hugo-webslides-themes/>):
+
+- [navy](https://npellegrin.github.io/hugo-webslides-themes/navy/)
+- [aurora](https://npellegrin.github.io/hugo-webslides-themes/aurora/)
+- [paper](https://npellegrin.github.io/hugo-webslides-themes/paper/)
+- [terminal](https://npellegrin.github.io/hugo-webslides-themes/terminal/)
+- [riso](https://npellegrin.github.io/hugo-webslides-themes/riso/)
+- [unicorn](https://npellegrin.github.io/hugo-webslides-themes/unicorn/)
+- [infinite](https://npellegrin.github.io/hugo-webslides-themes/infinite/)
 
 ## Layout
 
@@ -25,7 +36,14 @@ Each `config/<theme>/hugo.toml` sets both `customcss` and
 hugo server --environment riso     # live preview of one theme
 scripts/build.sh                   # every theme into public/<theme>/ + index
 scripts/build.sh riso terminal     # only some themes
+BASE_URL=https://example.org/sub/ scripts/build.sh   # other site root
 ```
+
+## Deployment
+
+`.github/workflows/pages.yml` runs `scripts/build.sh` on every push to `main`
+and publishes `public/` to GitHub Pages. Enable it once in the repository
+settings: Pages, Source: "GitHub Actions".
 
 ## Use a theme in your own deck
 
